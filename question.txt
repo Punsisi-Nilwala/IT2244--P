@@ -1,0 +1,120 @@
+Q1) Get the calender and date
+{ ~ }  » cal                                                                  ~
+     April 2025
+Su Mo Tu We Th Fr Sa
+       1  2  3  4  5
+ 6  7  8  9 10 11 12
+13 14 15 16 17 18 19
+20 21 22 23 24 25 26
+27 28 29 30
+
+{ ~ }  » date                                                                 ~
+Mon, Apr 28, 2025 10:41:49 PM
+
+
+Q2) Get the student name and marks for the 3 subjects from 
+user then calculate 
+
+	Output: 
+		Enter the name: Isuru
+		Enter the mark for subject1 : 80
+		Enter the mark for subject2 : 90
+		Enter the mark for subject3 : 70
+		Total = 240
+		Average = 80
+
+
+{ ~ }  » vi q2.sh                                                             ~
+{ ~ }  » chmod 777 q2.sh                                                      ~
+{ ~ }  » ./q2.sh                                                              ~
+./q2.sh: line 1: ho: command not found
+
+Enter the mark for subject1 :
+80
+Enter the mark for subject2 :
+90
+Enter the mark for subject3 :
+95
+Total =  265
+Average =  88:
+
+
+Q3) Create calculator with arithmetic operators 
+
+	Output: 
+		Enter the first number: 4
+		Enter the second number: 2
+		Summation: 6
+		Substraction: 6
+		Division: 2
+		Multiplication: 8
+{ ~ }  » vi q3.sh                                                             ~
+{ ~ }  » chmod 777 q3.sh                                                      ~
+{ ~ }  » ./q3.sh                                                              ~
+Enter the first number:
+5
+Enter the second number:
+2
+Summation:  7
+Substraction:  3
+Division:  2
+Multiplication:  10
+
+
+Q4) Get the days based on the user input number
+	
+	Output:
+		Enter the number: 5
+		Friday
+{ ~ }  » vi q4.sh                                                             ~
+{ ~ }  » chmod 777 q4.sh                                                      ~
+{ ~ }  » ./q4.sh                                                              ~
+Enter the number:
+5
+Friday
+
+
+Q5)	Verify whether your username is correct or not(use your name as incorrect)
+	Output:
+		Enter user name:
+		Mino
+		Username is correct
+		Enter user name:
+		mino
+		Username is incorrect
+{ ~ }  » vi q5.sh                                                             ~
+{ ~ }  » chmod 777 q5.sh                                                      ~
+{ ~ }  » ./q5.sh                                                              ~
+Enter user name;
+Mino
+Username is correct
+
+
+Q6)	Output: Enter two numbers:
+		7 5
+		7 is greater than 5
+	
+	Output: Enter two numbers:
+		1 9
+		1 is less than 9
+{ ~ }  » vi q6.sh                                                             ~
+{ ~ }  » chmod 777 q6.sh                                                      ~
+{ ~ }  » ./q6.sh                                                              ~
+Enter two numbers:
+7 5
+7  is greater than  5
+
+
+Q7) Create simple calculator using "expr" command same as the Q3
+
+{ ~ }  » vi q7.sh                                                             ~
+{ ~ }  » chmod 777 q7.sh                                                      ~
+{ ~ }  » ./q7.sh                                                              ~
+Enter the first number:
+5
+Enter the first number:
+2
+Summation:  7
+Substraction:  3
+Division:  2
+Multiplication:  10
