@@ -1,0 +1,289 @@
+Q1) Write a code for small astrology based on your life
+path number for that get date of birth from user then
+calculate life path number. (use switch case)
+	Example:-
+		Calculation for life path number: //date is 23
+			a=date%10	3
+			b=date/10	2
+			c=a+b	5
+		if life path number:
+			1:Lucky
+			2:Carefuly do your work
+			3:Storger
+			4:Happy
+			5:Can get help
+			6:Doubt
+			7:Sad
+			8:Like
+			9:Courage
+			
+{ ~ }  » vi Q1.sh 
+
+echo 'Enter your birth date: '
+read date
+
+a=$(($date%10))
+b=$(($date/10))
+c=$(($a+$b))
+
+case $c in
+1)echo "Lucky";;
+2)echo "Carefuly do your work";;
+3)echo "Storger";;
+4)echo "Happy";;
+5)echo "Can get help";;
+6)echo "Doubt";;
+7)echo "Sad";;
+8)echo "Like";;
+9)echo "Courage";;
+*)
+x=$(($c%10))
+y=$(($c/10))
+z=$(($x+$y))
+
+case $z in
+1)echo "Lucky";;
+2)echo "Carefuly do your work";;
+3)echo "Storger";;
+4)echo "Happy";;
+5)echo "Can get help";;
+6)echo "Doubt";;
+7)echo "Sad";;
+8)echo "Like";;
+9)echo "Courage";;
+*)echo "Try again!";;
+esac;;
+
+esac	
+
+{ ~ }  » chmod 777 Q1.sh                                                      ~
+{ ~ }  » ./Q1.sh                                                              ~
+Enter your birth date:
+10
+Lucky
+
+
+
+Q2) Give list of numbers then calculate the 
+	summation and multiplication using for loop.
+	Ex:-
+		1 2 3 4 5
+			Summation = 15
+			multiplication = 120
+
+//syntax for FOR LOOP
+for variable in list
+		do
+			commands
+		done 
+		
+{ ~ }  » vi QQ2.sh   
+
+sum=0
+mul=1
+
+for number in 1 2 3 4 5
+do
+sum=$(($sum+$number))
+mul=$(($mul*$number))
+done
+
+echo "Summation: " $sum
+echo "Multiplication: " $mul
+
+{ ~ }  » chmod 777 QQ2.sh                                                   ~ 1
+{ ~ }  » ./QQ2.sh                                                             ~
+Summation:  15
+Multiplication:  120
+
+
+Q3) Print the integers from 1 to 10 using while loop.
+
+//syntax
+while [ condition ] //while[variable_name -le 10]
+do
+	commands
+done
+
+
+{ ~ }  » vi QQ3.sh 
+
+let i=1
+while [ $i -le 10 ]
+do
+echo $i
+i=$(($i+1))
+done
+
+{ ~ }  » chmod 777 QQ3.sh                                                   ~ 1
+{ ~ }  » ./QQ3.sh                                                             ~
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+{ ~ }  » 
+		
+
+
+Q4) Print below pattern using nested loop.
+
+//suntax for nested for loop
+
+for ((variable=0; variable<=input;variable++))
+do
+	for ((variable=0; variable<=input;variable++))
+	do
+		commands
+	done
+done
+
+
+columns=7	rows = 7
+
+i)
+*
+* *
+* * *
+* * * *
+* * * * *
+* * * * * *
+* * * * * * *
+
+ii)
+* * * * * * *
+* * * * * *
+* * * * * 
+* * * *
+* * *
+* *
+*
+
+iii)
+1
+2 2
+3 3 3
+4 4 4 4
+5 5 5 5 5
+6 6 6 6 6 6
+
+
+iv)
+1
+1 2 
+1 2 3
+1 2 3 4
+1 2 3 4 5
+1 2 3 4 5 6
+
+
+v)
+    *
+   * *
+  * * *
+ * * * *
+* * * * *
+
+
+
+{ ~ }  » vi QQ4.sh   
+
+echo 'Enter number of Rows: '
+read rows
+echo 'Enter number of Columns: '
+read cols
+
+for ((i=1; i<=rows; i++))
+do
+for ((j=1; j<=i; j++))
+do
+echo -n '* '
+done
+echo ''
+done
+
+echo " "
+
+for ((i=1; i<=rows; i++))
+do
+for ((j=cols+1; j>i; j--))
+do
+echo -n '* '
+done
+echo ''
+done
+
+echo " "
+
+for ((i=1; i<=rows; i++))
+do
+for ((j=1; j<=i; j++))
+do
+echo -n $i " "
+done
+echo ''
+done
+
+echo " "
+
+for ((i=1; i<=rows; i++))
+do
+for ((j=1; j<=i; j++))
+do
+echo -n $j " "
+done
+echo ''
+done
+
+echo " "
+
+for ((i=1; i<=rows; i++))
+do
+    for ((k=1; k<=rows-i; k++))
+    do
+        echo -n " "
+    done
+
+    for ((j=1; j<=i; j++))
+    do
+        echo -n "* "
+    done
+
+    echo ""
+done                                                       ~ 1
+{ ~ }  » chmod 777 QQ4.sh                                                     ~
+{ ~ }  » ./QQ4.sh                                                             ~
+Enter number of Rows:
+4
+Enter number of Columns:
+4
+*
+* *
+* * *
+* * * *
+
+* * * *
+* * *
+* *
+*
+
+1
+2  2
+3  3  3
+4  4  4  4
+
+1
+1  2
+1  2  3
+1  2  3  4
+
+   *
+  * *
+ * * *
+* * * *
+{ ~ }  »     	
