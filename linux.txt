@@ -1,0 +1,137 @@
+//cal - display the calander.
+{ ~ }  » touch new.tsv                                                        ~
+{ ~ }  » vi new.tsv                                                           ~
+
+{ ~ }  »                                                                       ~
+{ ~ }  »                                                                       ~
+{ ~ }  »                                                                       ~
+{ ~ }  »                                                                       ~
+{ ~ }  »                                                                       ~
+{ ~ }  »                                                                       ~
+{ ~ }  » cal                                                                   ~
+     April 2025
+Su Mo Tu We Th Fr Sa
+       1  2  3  4  5
+ 6  7  8  9 10 11 12
+13 14 15 16 17 18 19
+20 21 22 23 24 25 26
+27 28 29 30
+
+
+//date +%d - display the date 'DD' format
+{ ~ }  » date +%d                                                              ~
+30
+{ ~ }  »
+
+//date +%m - display the month in 'MM' format.                                                                       ~
+{ ~ }  » date +%m                                                              ~
+04
+
+//date +%y - display the year in 'YY' format.
+{ ~ }  » date +%y                                                              ~
+25
+
+//date +%D - display the date in 'MM/DD/YY' format.
+{ ~ }  » date +%D                                                              ~
+04/30/25
+
+//date +%Y - display the year in 'YYYY' format.
+{ ~ }  » date +%Y                                                              ~
+2025
+
+//date +%B - display the month in word format.
+{ ~ }  » date +%B                                                              ~
+April
+
+//date +%b - display the month in word format.
+{ ~ }  » date +%b                                                              ~
+Apr
+
+//date +%A - display the day in word format.
+{ ~ }  » date +%A                                                              ~
+Wednesday
+
+//date +%a - display the day in word format.
+{ ~ }  » date +%a                                                              ~
+Wed
+
+//date +%h - display the month in word format.
+{ ~ }  » date +%h                                                              ~
+Apr
+
+
+{ ~ }  »                                                                       ~
+{ ~ }  »                                                                       ~
+{ ~ }  » 
+//Example 01                                                                     ~{ ~ }  »                                                                       ~/{ ~ }  »                                                                       ~
+{ ~ }  » vi example01.sh   
+
+echo "Who are you?"
+read name
+echo "Enter number 1"
+read x
+echo "Enter number 2"
+read y
+echo "Enter number 3"
+read z
+
+sum=$(($x+$y+$z))
+avg=$(($sum/3))
+echo "Hi" $name
+echo "Summation	" $sum
+echo "Average	" $avg
+
+{ ~ }  » ls                                                                   ~
+a1.csv   example01.sh   new.tsv~  q2.sh~  q4.sh   q5.sh~  q7.sh
+a1.csv~  example01.sh~  q1.sh     q3.sh   q4.sh~  q6.sh   q7.sh~
+bin      new.tsv        q2.sh     q3.sh~  q5.sh   q6.sh~
+{ ~ }  » chmod 777 example01.sh                                               ~
+{ ~ }  » ./example01.sh                                                       ~
+Who are you?
+Punsisi
+Enter number 1
+4
+Enter number 2
+5
+Enter number 3
+6
+Hi Punsisi
+Summation        15
+Average  5
+
+
+//Example 02
+Read two number from user and print 
+addition, subtraction, multiplication and divition.
+{ ~ }  » vi.example02.sh 
+
+echo "Enter a"
+read a
+echo "Enter number b"
+read b
+
+sum=$(($a+$b))
+sub=$(($a-$b))
+mul=$(($a*$b))
+div=$(($a/$b))
+
+echo "Summation	" $sum
+echo "Subtraction	" $sub
+echo "Multiplication	" $mul
+echo "Division	" $div
+
+{ ~ }  » chmod 777 example02.sh                                               ~
+{ ~ }  » ./example02.sh                                                       ~
+Enter a
+10
+Enter number b
+5
+Summation        15
+Subtraction      5
+Multiplication   50
+Division         2
+
+
+
+                                                    ~
+
