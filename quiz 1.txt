@@ -1,0 +1,48 @@
+Quiz 1
+
+Code:
+read -p "Enter first number (num1): " num1
+read -p "Enter second number (num2): " num2
+read -p "Enter third number (num3): " num3
+
+# Calculate LCM of num1 and num2
+
+temp1=$num1
+temp2=$num2
+product=$((num1 * num2))
+
+while [ $temp2 -ne 0 ]
+do
+    rem=$((temp1 % temp2))
+    temp1=$temp2
+    temp2=$rem
+done
+gcd_lcm=$temp1
+lcm=$((product / gcd_lcm))
+
+# Calculate GCD of num2 and num3
+temp1=$num2
+temp2=$num3
+
+while [ $temp2 -ne 0 ]
+do
+    rem=$((temp1 % temp2))
+    temp1=$temp2
+    temp2=$rem
+done
+gcd=$temp1
+
+
+
+#Output
+echo "LCM of $num1 and $num2 is: $lcm"
+echo "GCD of $num2 and $num3 is: $gcd"
+
+
+Output:
+{ ~ }  » ./gcdlcm.sh                                                          ~
+Enter first number (num1): 20
+Enter second number (num2): 12
+Enter third number (num3): 35
+LCM of 20 and 12 is: 60
+GCD of 12 and 35 is: 1
