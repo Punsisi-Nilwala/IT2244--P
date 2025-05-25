@@ -1,0 +1,208 @@
+1. //Print a statement
+
+
+#include<stdio.h>
+int main(){
+	
+	printf("Hello world! ");
+	
+	return 0;
+}
+
+
+gcc 1PrintAStatement.c -o 1PrintAStatement
+
+
+
+
+2. //Variables
+#include<stdio.h>
+int main(){
+	
+	int age =25;
+	printf("Age: %d\n", age);
+	
+	return 0;
+}
+
+
+
+
+
+3. //Assign new value for same variable
+
+
+#include<stdio.h>
+int main(){
+	
+	int age=25;
+    printf("Age: %d\n", age);
+
+    printf("C programming \n");
+
+    age=31;
+    printf("New age: %d\n", age);
+	
+	return 0;
+}
+
+
+
+
+4. //Assigning the variable
+
+
+#include<stdio.h>
+int main(){
+	
+	int firstNumber = 37;
+	printf("First Number: %d\n", firstNumber);
+	
+	int secondNumber = firstNumber;
+	printf("Second Number: %d\n", secondNumber);
+	
+	return 0;
+}
+
+
+
+
+
+5. //Declare multiple variables in single line
+
+
+#include<stdio.h>
+int main(){
+	
+	int num1, num2 = 32;
+	printf("First Number: %d\n", num1);
+	printf("Second Number: %d\n", num2);
+	
+	return 0;
+}
+
+
+
+
+
+6. Data Types
+
+
+#include<stdio.h>
+int main(){
+	
+	printf("Integer\n");
+    int age = 41;
+    printf("Integer value: %d\n", age);
+    printf("Size: %zu\n\n", sizeof(age)); // %zu ==> Undifined length
+
+    printf("Double\n");
+    double number = 23.567;
+    printf("Decimal Number: %lf\n", number);
+    //To two decimal points
+    printf("Decimal Number(to two decimal points): %.2lf\n\n", number);
+
+    printf("Float\n");
+    float num = 7.35f;
+    printf("Float Number: %f\n", num);
+    //To one decimal points
+    printf("Float Number(to one decimal points): %.1f\n\n", num);
+
+    printf("Character\n");
+    char ch = 'n';
+    printf("Character: %c\n", ch);
+    printf("Character: %d\n", ch); //characters are store as integers in the machine	
+	return 0;
+}
+
+
+
+
+
+7. //Take input from users
+
+
+#include<stdio.h>
+int main(){
+	
+	printf("Integer\n");
+    int number;
+	printf("Enter an integer: ");
+	scanf("%d", &number);
+	printf("Integer: %d\n\n", number);
+
+    printf("Double\n");
+    double numb;
+	printf("Enter a decimal number: ");
+	scanf("%lf", &numb);
+	printf("Double: %lf\n\n", numb);
+
+    printf("Float\n");
+    float num;
+	printf("Enter a floating point: ");
+	scanf("%f", &num);
+	printf("Floating Point: %f\n\n", num);
+
+    printf("Character\n");
+    char ch;
+	printf("Enter a character: ");
+	scanf(" %c", &ch);
+	printf("Character: %c\n\n", ch);
+
+	return 0;
+}
+
+
+
+
+
+8. //Take multiple inputs together
+
+
+#include<stdio.h>
+int main(){
+	
+	double number;
+	char alpha;
+	
+	printf("Enter a decimal and a character: ");
+	scanf("%lf %c", &number, &alpha);
+	printf("Number is: %lf\n", number);
+	printf("Character is: %c\n", alpha);
+	
+	return 0;
+}
+
+
+
+
+
+9. //C Operators
+
+/*
+	arithmetic operators
+	+
+	-
+	*
+	/
+	% - reminder
+*/
+
+
+#include<stdio.h>
+int main(){
+	
+	int num1, num2;
+	printf("Enter number 1: ");
+	scanf("%d", &num1);
+	printf("Enter number 2: ");
+	scanf("%d", &num2);
+	
+	printf("Addition: %d\n", (num1+num2));
+	printf("Subtraction: %d\n", (num1-num2));
+	printf("Multiplication: %d\n", (num1*num2));
+	printf("Division: %d\n", (num1/num2));
+	
+	return 0;
+}
+
