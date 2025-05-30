@@ -1,0 +1,65 @@
+//answer 1
+
+cd %USERPROFILE%\Desktop
+
+mkdir CSC2244 Marks Exam
+
+mkdir practical theory "exam papers"
+
+cd practical
+echo. > practical.txt
+echo. > practical.docx
+echo. > practical.pptx
+
+cd..
+cd theory
+echo. > theory.txt
+echo. > theory.docx
+echo. > theory.pptx
+
+cd..
+cd "exam papers"
+echo. > "exam papers".txt
+echo. > "exam papers".docx
+echo. > "exam papers".pptx
+
+cd..
+cd %USERPROFILE%\Desktop
+echo. > Icae_Marks.xlsx
+echo. > Final_Exam_Marks.xlsx
+
+move "C:\Users\User\Desktop\Icae_Marks.xlsx" "C:\Users\User\Desktop\Marks"
+move "C:\Users\User\Desktop\Final_Exam_Marks.xlsx" "C:\Users\User\Desktop\Marks"
+
+xcopy "C:\Users\User\Desktop\Marks" "C:\Users\User\Desktop\Exam" /E /I /H
+
+attrib +h "C:\Users\User\Desktop\Exam"
+ICA 2
+
+//answer 2
+
+awk -F, 'NR==1 || $4 > 3.5' question2.csv
+
+awk -F, 'NR>1 {sum+=$4; count++} END {if (count > 0) print "Average GPA", sum/count}' question2.csv
+
+
+
+//answer 3
+
+echo "Enter the first string: "
+read str1
+echo "Enter the second string: "
+read str2
+
+str1_len=${#str1}
+str2_len=${#str2}
+
+if [ str2_len > str1_len ];
+then
+echo $str2 " is larger than " $str1
+elif [ str2_len < str1_len ];
+then
+echo $str2 " is smaller than " $str1
+else
+echo $str1 " and " $str2 " are having equal length "
+fi
