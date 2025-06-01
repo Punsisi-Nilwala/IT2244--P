@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <unistd.h>
+
+int main() {
+    printf("\nA (Parent process)\n");
+    printf("I'm A my ID is %d\n", getpid());
+    printf("I'm A my parent ID is %d\n", getppid());
+
+    int f1 = fork(); // First fork
+
+    if (f1 == 0) {
+        
+        printf("B (Child of A)\n");
+        printf("I'm B my ID is %d\n", getpid());
+        printf("I'm B my parent ID is %d\n", getppid());
+    } else {
+        int f2 = fork(); // Second fork
+
+        if (f2 == 0) {
+            
+            printf("C (Child of A)\n");
+            printf("I'm C my ID is %d\n", getpid());
+            printf("I'm C my parent ID is %d\n", getppid());
+        }
+    }
+
+    return 0;
+}
