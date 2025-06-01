@@ -1,0 +1,108 @@
+#include<stdio.h>
+#include<unistd.h>
+int main(){
+printf("\nHello world");
+int f=fork();
+int p=getpid();
+printf("\n the pid is %d" ,p);
+printf("\n the fork is %d" ,f);
+return 0;
+}
+
+
+
+#include<stdio.h>
+#include<unistd.h>
+int main()
+{
+fork();
+printf("\nHello world\n");
+return 0;
+}
+
+
+
+#include<stdio.h>
+#include<unistd.h>
+int main(){
+printf("\nHello world");
+int f=fork();
+int p=getpid();
+printf("\n hello i'm parent process %d" ,p);
+printf("\n hello i'm child process %d" ,f);
+return 0;
+}
+
+
+
+
+#include<stdio.h>
+#include<unistd.h>
+int main()
+{
+int f= fork();
+if (f==0)
+{
+printf("I'm child\n");
+}
+else
+{
+printf("I'm the patent process\n");
+}
+
+return 0;
+}
+
+
+
+
+
+
+include<stdio.h>
+#include<unistd.h>
+int main()
+{
+int p = getpid();
+int f = fork();
+if(f==0)
+{
+printf("I am Parent ");
+}
+else{
+fork();
+if(f==0)
+{
+printf("I am child");
+}
+else
+{
+printf("I am sibling");
+}
+}
+return 0;
+}
+
+//
+include<stdio.h>
+#include<unistd.h>
+int main()
+{
+int p = getpid();
+int f = fork();
+if(f==0)
+{
+printf("I am Parent ");
+}
+else{
+fork();
+if(f==0)
+{
+printf("I am child");
+}
+else
+{
+printf("I am sibling");
+}
+}
+return 0;
+}
