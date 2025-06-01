@@ -1,0 +1,109 @@
+Exercise
+
+IPC using Message Queue
+
+read inputs from the parent process
+Enter name: hi
+Enter RegNo: 2314
+Enter Age: 24
+
+Message sent successfully.
+
+give the output from the child prosess
+
+Received Name: hi
+Received RegNO: 2314
+Received Age: 24
+
+
+
+//send
+
+#include <stdio.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
+#include <string.h>
+
+#define MAX 100
+
+// Structure for message queue
+struct mesg_buffer {
+    long mesg_type;
+    char name[MAX];
+    int reg_no;
+    int age;
+} message;
+
+int main() {
+    key_t key;
+    int msgid;
+
+    // Generate unique key
+    key = ftok("2021ict33", 65);
+
+    // Create message queue
+    msgid = msgget(key, 0666 | IPC_CREAT);
+
+    message.mesg_type = 1;
+
+    // Read input from the parent process
+    printf("Enter Name: ");
+    fgets(message.name, MAX, stdin);
+    message.name[strcspn(message.name, "\n")] = 0; // Remove newline character
+
+    printf("Enter RegNo: ");
+    scanf("%d", &message.reg_no);
+
+    printf("Enter Age: ");
+    scanf("%d", &message.age);
+
+    // Send message
+    msgsnd(msgid, &message, sizeof(message), 0);
+
+    printf("Message sent successfully.\n");
+
+    return 0;
+}
+
+
+
+
+//receive
+
+#include <stdio.h>
+#include <sys/ipc.h>
+#include <sys/msg.h>
+
+#define MAX 100
+
+// Structure for message queue
+struct mesg_buffer {
+    long mesg_type;
+    char name[MAX];
+    int reg_no;
+    int age;
+} message;
+
+int main() {
+    key_t key;
+    int msgid;
+
+    // Generate unique key
+    key = ftok("2021ict33", 65);
+
+    // Create message queue
+    msgid = msgget(key, 0666 | IPC_CREAT);
+
+    // Receive message
+    msgrcv(msgid, &message, sizeof(message), 1, 0);
+
+    // Display received data
+    printf("Received Name: %s\n", message.name);
+    printf("Received RegNo: %d\n", message.reg_no);
+    printf("Received Age: %d\n", message.age);
+
+    // Destroy the message queue
+    msgctl(msgid, IPC_RMID, NULL);
+
+    return 0;
+}
