@@ -24,6 +24,7 @@ output 4
 ![Screenshot (136)](https://github.com/user-attachments/assets/970c2106-c01f-45bf-8fd7-6d2d2e4dbe22)
 
 
+
 output
 
 ![pipe_02](https://github.com/user-attachments/assets/17164765-13e5-45e5-959d-d118685d1fbe)
