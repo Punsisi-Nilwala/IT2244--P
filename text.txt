@@ -1,0 +1,140 @@
+//1
+
+//writer propcess1
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<sys/ipc.h>
+#include<sys/shm.h>
+
+#define SHM_SIZE 1024 //Size of shared memory segment
+
+int main(){
+key_t key = ftok("shmfile2", 65);//Generate unique key
+int shmid = shmget(key, SHM_SIZE, IPC_CREAT | 0666); //create shared memory segment
+if(shmid == -1){
+	perror("shmget");
+	exit(1);
+}
+
+char *shmaddr = (char*) shmat(shmid, NULL, 0); //Attach to shared memory
+if(shmaddr == (char*) -1){
+	perror("shmat");
+	exit(1);
+}
+
+printf("Write Data: ");
+fgets(shmaddr, SHM_SIZE, stdin);//write data to shared memory
+
+printf("Data written in memory: %s\n", shmaddr);
+
+shmdt(shmaddr); //Detach from shared memory
+
+return 0;
+
+}
+
+
+
+//reader
+
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<sys/ipc.h>
+#include<sys/shm.h>
+
+#define SHM_SIZE 1024 //Size of shared memory segment
+
+int main(){
+key_t key = ftok("shmfile2", 65);//Generate unique key
+int shmid = shmget(key, SHM_SIZE, 0666); //create shared memory segment
+if(shmid == -1){
+	perror("shmget");
+	exit(1);
+}
+
+char *shmaddr = (char*) shmat(shmid, NULL, 0); //Attach to shared memory
+if(shmaddr == (char*) -1){
+	perror("shmat");
+	exit(1);
+}
+
+printf("Data read from memory: %s\n", shmaddr);//read data from shared memory
+
+shmdt(shmaddr); //Detach from shared memory
+
+shmctl(shmid, IPC_RMID, NULL); // Remove shared memory segment
+
+return 0;
+
+}
+
+
+
+
+
+
+//2
+
+/*using shared memory
+i)get user inputs from parent process(n=5,r=2)
+ii)calculate nCr and nPr of that numbers and print them in child process
+iii)only parent process can get the user inputs and in the child process create the needed functions and process
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/mman.h>
+#include <sys/wait.h>
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+// Function to calculate factorial
+long long factorial(int num) {
+    long long fact = 1;
+    for (int i = 1; i <= num; i++)
+        fact *= i;
+    return fact;
+}
+
+// Function to calculate nCr and nPr
+void calculate(int *shmaddr) {
+    int n = shmaddr[0];
+    int r = shmaddr[1];
+
+    shmaddr[2] = factorial(n) / (factorial(r) * factorial(n - r)); // nCr
+    shmaddr[3] = factorial(n) / factorial(n - r); // nPr
+}
+
+int main() {
+    key_t key = ftok("shmfile", 65);  // Generate unique key
+    int shmid = shmget(key, sizeof(int) * 4, 0666 | IPC_CREAT);  // Create shared memory
+    if (shmid == -1) {
+        perror("shmget");
+        exit(1);
+    }
+
+    int *shmaddr = (int *)shmat(shmid, NULL, 0);  // Attach shared memory
+    if (shmaddr == (int *)-1) {
+        perror("shmat");
+        exit(1);
+    }
+
+    pid_t pid = fork();  // Create child process
+
+    if (pid > 0) {  // Parent process
+        printf("Parent Process: Enter n and r values: 5 2\n");
+        int n = 5, r = 2;  // Fixed values (or get user input with scanf)
+        shmaddr[0] = n;
+        shmaddr[1] = r;
+        printf("Parent Process: Values stored in shared memory.\n");
+
+        wait(NULL);  // Wait for the child process to complete
